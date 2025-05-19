@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>📷 Upload &amp; Scan Receipt</h1>
+  <form action="/upload-scan" method="post" enctype="multipart/form-data">
+    <label for="file">Choose Receipt Image:</label>
+    <input type="file" id="file" name="file" accept="image/*" required />
+    <button type="submit">Scan Receipt</button>
+  </form>
+  <p><a href="/">← Back to Home</a></p>
+{% endblock %}

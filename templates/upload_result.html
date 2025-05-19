@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if error %}
+    <div class="alert error">{{ error }}</div>
+    <p><a href="/upload-scan">Try Again</a></p>
+  {% elif message %}
+    <div class="alert success">{{ message }}</div>
+
+    {% if diffs %}
+      <h1>⚠️ Differences Found</h1>
+      <table>
+        <tr><th>Field</th><th>Old Value</th><th>New Value</th></tr>
+        {% for fld, diff in diffs.items() %}
+          <tr>
+            <td>{{ fld }}</td>
+            <td>{{ diff.old or "—" }}</td>
+            <td>{{ diff.new or "—" }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+      <form action="/confirm-update" method="post" style="margin-top:1.5rem;">
+        <input type="hidden" name="order_id" value="{{ order.order_id }}" />
+        <input type="hidden" name="new_data" value="{{ new_data }}" />
+        <button type="submit">Confirm Update</button>
+      </form>
+    {% endif %}
+    <p><a href="/">← Back to Home</a></p>
+  {% endif %}
+{% endblock %}

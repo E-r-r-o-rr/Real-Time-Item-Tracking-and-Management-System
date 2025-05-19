@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>📋 All Orders</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Filename</th>
+      <th>Order ID</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th>Collected?</th>
+      <th>Last Updated</th>
+    </tr>
+    {% for o in orders %}
+      <tr>
+        <td>{{ o.id }}</td>
+        <td>{{ o.filename or "—" }}</td>
+        <td>{{ o.order_id or "—" }}</td>
+        <td>{{ o.date or "—" }}</td>
+        <td>{{ o.total or "—" }}</td>
+        <td>{{ "Yes" if o.collected else "No" }}</td>
+        <td>{{ o.last_updated.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <p><a href="/">← Back to Home</a></p>
+{% endblock %}

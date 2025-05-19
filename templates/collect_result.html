@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if error %}
+    <div class="alert error">{{ error }}</div>
+    <p><a href="/collect">Try Again</a></p>
+  {% elif message %}
+    <div class="alert success">{{ message }}</div>
+    <p><a href="/">← Back to Home</a></p>
+  {% endif %}
+{% endblock %}

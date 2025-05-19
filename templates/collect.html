@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>🔖 Collect an Order</h1>
+  <form action="/collect" method="post" enctype="multipart/form-data">
+    <label for="order_id">Paste Order ID:</label>
+    <input type="text" id="order_id" name="order_id" placeholder="e.g. ABC123" />
+
+    <p style="text-align:center; margin: 1.5rem 0; font-size: 0.9rem; color: #666;">
+      — or —
+    </p>
+
+    <label for="file">Upload Barcode Image:</label>
+    <input type="file" id="file" name="file" accept="image/*" />
+
+    <button type="submit">Submit</button>
+  </form>
+  <p><a href="/">← Back to Home</a></p>
+{% endblock %}
